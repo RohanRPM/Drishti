@@ -1,14 +1,14 @@
 // src/pages/Dashboard.jsx
 import React from 'react';
-import { Link } from 'react-router-dom';
+// import { Link } from 'react-router-dom';
 import ProjectDashboard from './ProjectDashboard';
-import logo from '../assets/logo.png';
+// import logo from '../assets/logo.png';
 
 const Dashboard = () => {
   return (
     <div className="min-h-screen flex">
       {/* Sidebar */}
-      <div className="w-64 bg-gray-800 text-white flex flex-col">
+      {/* <div className="w-64 bg-gray-800 text-white flex flex-col">
         <div className="p-4 flex items-center">
           <img src={logo} alt="Drishti Logo" className="h-8 mr-2" />
           <span className="font-bold text-lg">Drishti</span>
@@ -19,7 +19,7 @@ const Dashboard = () => {
           <Link to="/data-entry-upload" className="block p-2 rounded hover:bg-gray-700">Data Entry & Upload</Link>
           <Link to="/profile" className="block p-2 rounded hover:bg-gray-700">Profile</Link>
         </nav>
-      </div>
+      </div> */}
       
       {/* Main Content */}
       <div className="flex-1 bg-gray-100 p-6">

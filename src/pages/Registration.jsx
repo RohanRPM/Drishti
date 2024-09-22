@@ -4,7 +4,7 @@ import { Link, useNavigate } from 'react-router-dom';
 import { Input } from '../components/ui/Input';
 import { Button } from '../components/ui/Button';
 import { Label } from '../components/ui/Label';
-import logo from '../assets/logo.png';
+import logo from '../assets/logo1.png';
 
 const Registration = () => {
   const [formData, setFormData] = useState({ name: '', email: '', mobile: '', password: '', confirmPassword: '' });

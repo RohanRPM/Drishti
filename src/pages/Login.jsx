@@ -5,7 +5,7 @@ import { Input } from '@/components/ui/Input';
 import { Button } from '@/components/ui/Button';
 import { Label } from '@/components/ui/Label';
 import { AuthContext } from '@/context/AuthContext';
-import logo from '@/assets/logo.png';
+import logo from '@/assets/logo1.png';
 
 const Login = () => {
   const [credentials, setCredentials] = useState({ email: '', password: '' });

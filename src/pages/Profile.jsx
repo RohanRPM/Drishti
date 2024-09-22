@@ -4,7 +4,7 @@ import { Input } from '../components/ui/Input';
 import { Button } from '../components/ui/Button';
 import { Label } from '../components/ui/Label';
 import { Card, CardContent, CardHeader, CardTitle } from '../components/ui/Card';
-import logo from '../assets/logo.png';
+// import logo from '../assets/logo.png';
 
 const Profile = () => {
   const [profile, setProfile] = useState({
