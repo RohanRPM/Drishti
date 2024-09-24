@@ -9,7 +9,7 @@ import { Input } from '@/components/ui/Input';
 import { Button } from '@/components/ui/Button';
 
 const AdminControlPanel = () => {
-  const [activeTab, setActiveTab] = useState("notifications");
+  const [activeTab, setActiveTab] = useState("projects");
   const [users, setUsers] = useState([
     { id: 1, name: 'Moin Arbee', role: 'Investigator' },
     { id: 2, name: 'Rohan Meshram', role: 'Admin' },

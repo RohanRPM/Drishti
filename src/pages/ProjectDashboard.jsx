@@ -1,20 +1,18 @@
-// src/pages/ProjectDashboard.jsx
-import React from 'react';
+import React, { useState } from 'react';
 import { Card, CardContent, CardHeader, CardTitle } from '../components/ui/Card';
 import { Progress } from '../components/ui/Progress';
-import { Bar } from 'react-chartjs-2';
-import { Pie } from 'react-chartjs-2';
+import { Bar, Pie } from 'react-chartjs-2';
 import { Chart as ChartJS, CategoryScale, LinearScale, BarElement, Title, Tooltip, Legend, ArcElement } from 'chart.js';
 
 ChartJS.register(CategoryScale, LinearScale, BarElement, Title, Tooltip, Legend, ArcElement);
 
 const ProjectDashboard = () => {
-  // Sample data
+  // Sample data for projects
   const projectsData = [
-    { name: 'Project A', progress: 75, budget: 100000, spent: 75000 },
-    { name: 'Project B', progress: 50, budget: 150000, spent: 60000 },
-    { name: 'Project C', progress: 90, budget: 80000, spent: 78000 },
-    { name: 'Project D', progress: 30, budget: 200000, spent: 50000 },
+    { name: 'Project A', progress: 75, budget: 100000, spent: 75000, upcomingDeadline: 'Quarterly Report: 30th Sept' },
+    { name: 'Project B', progress: 50, budget: 150000, spent: 60000, upcomingDeadline: 'Financial Report: 15th Oct' },
+    { name: 'Project C', progress: 90, budget: 80000, spent: 78000, upcomingDeadline: 'Completion Report: 1st Nov' },
+    { name: 'Project D', progress: 30, budget: 200000, spent: 50000, upcomingDeadline: 'Quarterly Report: 15th Oct' },
   ];
 
   const statusData = [
@@ -23,7 +21,6 @@ const ProjectDashboard = () => {
     { name: 'Not Started', value: 3 },
   ];
 
-  // Additional datasets for new pie charts
   const additionalStatusData1 = [
     { name: 'High Priority', value: 6 },
     { name: 'Medium Priority', value: 8 },
@@ -66,10 +63,22 @@ const ProjectDashboard = () => {
     ],
   };
 
+  // State to store the message to the admin
+  const [message, setMessage] = useState('');
+  const [messageSent, setMessageSent] = useState(false);
+
+  // Function to handle message submission
+  const handleSendMessage = () => {
+    if (message.trim() === '') return; // Prevent sending empty messages
+    setMessageSent(true); // Simulate message sent
+    setMessage(''); // Clear the input field after sending
+  };
+
   return (
     <div className="p-4">
-      <h1 className="text-2xl font-bold mb-4">Project Dashboard</h1>
+      <h1 className="text-2xl font-bold mb-4">Drishti Investigator Dashboard</h1>
 
+      {/* Summary Cards */}
       <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-4 mb-4">
         <Card>
           <CardHeader>
@@ -103,6 +112,7 @@ const ProjectDashboard = () => {
         </Card>
       </div>
 
+      {/* Project Progress and Budget vs Spent */}
       <div className="grid grid-cols-1 lg:grid-cols-2 gap-4 mb-4">
         <Card>
           <CardHeader>
@@ -116,6 +126,7 @@ const ProjectDashboard = () => {
                   <span>{project.progress}%</span>
                 </div>
                 <Progress value={project.progress} className="w-full" />
+                <p className="text-sm text-gray-500">Upcoming: {project.upcomingDeadline}</p>
               </div>
             ))}
           </CardContent>
@@ -148,6 +159,49 @@ const ProjectDashboard = () => {
         </Card>
       </div>
 
+      {/* Communication and Submission Sections */}
+      <div className="grid grid-cols-1 lg:grid-cols-2 gap-4 mb-4">
+        <Card>
+          <CardHeader>
+            <CardTitle>Communication with CMPDI</CardTitle>
+          </CardHeader>
+          <CardContent>
+            <p className="text-sm text-gray-700">
+              Use the built-in messaging system to contact CMPDI for project updates, fund requests, or time extensions.
+              Ensure to communicate any delays or issues promptly.
+            </p>
+            <textarea
+              className="w-full mt-2 p-2 border rounded"
+              placeholder="Type your message here..."
+              value={message}
+              onChange={(e) => setMessage(e.target.value)}
+            />
+            <button
+              className="mt-4 px-4 py-2 bg-blue-500 text-white rounded"
+              onClick={handleSendMessage}
+            >
+              Send Message
+            </button>
+            {messageSent && (
+              <p className="mt-2 text-green-600">Your message has been sent successfully!</p>
+            )}
+          </CardContent>
+        </Card>
+
+        <Card>
+          <CardHeader>
+            <CardTitle>Upload Reports and Documents</CardTitle>
+          </CardHeader>
+          <CardContent>
+            <p className="text-sm text-gray-700">
+              Submit quarterly progress reports, financial reports, or completion documents through the platform. Once uploaded, you will receive a confirmation for successful submission.
+            </p>
+            <button className="mt-4 px-4 py-2 bg-green-500 text-white rounded">Upload Report</button>
+          </CardContent>
+        </Card>
+      </div>
+
+      {/* Status and Priority Overview */}
       <div className="grid grid-cols-1 lg:grid-cols-2 gap-4 mb-4">
         <Card>
           <CardHeader>
