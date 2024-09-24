@@ -8,8 +8,8 @@ import { Card, CardContent, CardHeader, CardTitle } from '../components/ui/Card'
 
 const Profile = () => {
   const [profile, setProfile] = useState({
-    name: 'John Doe',
-    email: 'john.doe@example.com',
+    name: 'Moin Arbee',
+    email: 'moin.arbee@example.com',
     mobile: '1234567890',
     password: '',
     confirmPassword: '',

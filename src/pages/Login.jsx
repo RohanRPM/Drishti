@@ -25,7 +25,7 @@ const Login = () => {
       navigate('/admin-control-panel');
     } else {
       // For simplicity, any other credentials are treated as Investigator
-      login({ name: 'John Doe', email: credentials.email, role: 'Investigator' });
+      login({ name: 'Moin Arbee', email: credentials.email, role: 'Investigator' });
       navigate('/dashboard');
     }
   };
